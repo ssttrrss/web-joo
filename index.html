@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Beautiful Web Pages</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            color: #fff;
+            text-align: center;
+            transition: background 0.5s ease;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            color: #333;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .cta-button:hover {
+            background: linear-gradient(to right, #45a049, #4CAF50);
+            transform: scale(1.1);
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .feature-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            width: 250px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .feature-box:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sign up.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>Welcome to Our Website</h1>
+        <p>Discover amazing content, manage your profile, and customize your settings easily.</p>
+        <a href="sign up.html" class="cta-button">Get Started</a>
+    </div>
+    
+    <div class="features">
+        <div class="feature-box">
+            <h2>Fast Performance</h2>
+            <p>Our website is optimized for fast loading and smooth experience.</p>
+        </div>
+        <div class="feature-box">
+            <h2>Secure Platform</h2>
+            <p>We ensure your data is protected with top-notch security measures.</p>
+        </div>
+        <div class="feature-box">
+            <h2>Support</h2>
+            <p>Get support anytime you need with our dedicated team.</p>
+        </div>
+    </div>
+</body>
+</html>

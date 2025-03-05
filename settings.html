@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Beautiful Web Pages</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-theme {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #0b110c;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+        }
+        ul.settings-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul.settings-menu li {
+            margin: 15px 0;
+        }
+        ul.settings-menu li a {
+            display: block;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        ul.settings-menu li a:hover {
+            background-color: #0a0e0a;
+            transform: translateY(-2px);
+        }
+        ul.settings-menu li a:active {
+            transform: translateY(2px);
+        }
+        .country-select {
+            display: none;
+            margin-top: 20px;
+        }
+        .country-select select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .country-select button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .country-select button:hover {
+            background-color: #0a0e0a;
+            transform: translateY(-2px);
+        }
+        .country-select button:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sign up.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>Settings</h1>
+        <ul class="settings-menu">
+            <li><a href="support.html">Support</a></li>
+            <li><a href="forget password.html">Change Password</a></li>
+            <li><a href="#" id="theme-toggle">Change Theme</a></li>
+            <li><a href="#" id="delete-account">Delete Account</a></li>
+            <li><a href="#" id="change-country">Change Country</a></li>
+        </ul>
+        <div class="country-select" id="country-select">
+            <select id="country">
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+            </select>
+            <button id="apply-country">Apply</button>
+        </div>
+    </div>
+
+    <script>
+        // Apply the theme on page load
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.removeItem('theme');
+            }
+        });
+
+        document.getElementById('delete-account').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to delete your account?')) {
+                alert('Your account has been deleted.');
+            }
+        });
+
+        document.getElementById('change-country').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('country-select').style.display = 'block';
+        });
+
+        document.getElementById('apply-country').addEventListener('click', function() {
+            const selectedCountry = document.getElementById('country').value;
+            alert('Country changed to: ' + selectedCountry);
+            document.getElementById('country-select').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

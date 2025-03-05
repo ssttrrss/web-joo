@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Beautiful Web Pages</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #0b110c;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+        }
+        .contact-info {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .chatbot {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .chatbot input, .chatbot button {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .chatbot button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .chatbot button:hover {
+            background-color: #0a0e0a;
+            transform: translateY(-2px);
+        }
+        .chatbot button:active {
+            transform: translateY(2px);
+        }
+        .chatbot .messages {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .chatbot .messages .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        .chatbot .messages .message.user {
+            text-align: right;
+            background-color: #e0ffe0;
+        }
+        .chatbot .messages .message.bot {
+            text-align: left;
+            background-color: #e0e0ff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sign up.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <h1>Support</h1>
+        <div class="contact-info">
+            <p>Email: youseef.shawky2008@gmail.com</p>
+            <p>Phone: 01118501275</p>
+        </div>
+        <div class="chatbot">
+            <h2>Chat with our Support Bot</h2>
+            <div class="messages" id="messages"></div>
+            <input type="text" id="user-input" placeholder="Type your question here...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                addMessage('user', userInput);
+                document.getElementById('user-input').value = '';
+                setTimeout(() => {
+                    addMessage('bot', getBotResponse(userInput));
+                }, 1000);
+            }
+        });
+
+        function addMessage(sender, text) {
+            const messages = document.getElementById('messages');
+            const message = document.createElement('div');
+            message.classList.add('message', sender);
+            message.textContent = text;
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            // Simple bot responses
+            const responses = {
+                'hello': 'Hello! How can I assist you today?',
+                'hi': 'Hi there! How can I help you?',
+                'how are you': 'I am just a bot, but I am here to help you!',
+                'what is your name': 'I am Support Bot, here to assist you.',
+                'bye': 'Goodbye! Have a great day!'
+            };
+            return responses[input.toLowerCase()] || 'I am sorry, I do not understand your question.';
+        }
+    </script>
+</body>
+</html>
